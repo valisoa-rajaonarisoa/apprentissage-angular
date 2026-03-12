@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LevelPipe } from '../level-pipe';
 
 export type DepartementType = 'IT' | 'Marketing' | 'HR';
 export type LevelType = 'J' | 'M' | 'S';
@@ -11,7 +12,7 @@ interface IEmployee {
 }
 @Component({
   selector: 'app-employee',
-  imports: [],
+  imports: [LevelPipe],
   templateUrl: './employee.html',
   styleUrl: './employee.css',
 })
@@ -20,6 +21,6 @@ export class Employee {
     id: '1245efdkhh12dhje',
     name: 'Jao',
     departement: 'IT',
-    level: 'S',
+    level: 'M',
   };
 }
