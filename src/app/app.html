@@ -1,16 +1,14 @@
-<!-- <div>
-  <app-employee />
-
-  <h2> valuer de count : {{count()}}</h2>
-</div> -->
-
 <div>
-  <!-- //2  A F F I C H E R   L E S   E T A T S -->
-  <h2>{{ name() }}</h2>
-  <h2>{{ age() }}</h2>
+  <!-- //:Input on utilise attribute bedding  [nom]="value"  -->
+  <!-- Output : on utilise event bedding (nom)="functionName()" -->
+  <app-employee 
+  employee]="employee" 
 
-  <div class="mt-5 flex gap-5">
-    <button (click)="increment()" class="bg-red-500 px-4 py-2">+</button>
-    <button (click)="decrement()" class="bg-green-500 px-4 py-2">-</button>
-  </div>
+  <!--  4   Ici on met le nom de l output de l enfant  -->
+  <!-- suivi le nom de la fonction qui va afficher la valeur recuperer dans le parent -->
+  <!-- avec $event pour recuperer le return du output qui etait un string -->
+  
+  (monOutput)="clickParent($event)" 
+  
+  />
 </div>

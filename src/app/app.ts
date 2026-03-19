@@ -1,28 +1,33 @@
-import { Component, computed, effect, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { Employee } from './employee/employee';
-import { DatePipe } from '@angular/common';
-import { UpperCasePipe } from './upper-case-pipe';
 
+export type DepartementType = 'IT' | 'Marketing' | 'HR';
+export type LevelType = 'J' | 'M' | 'S';
+
+export interface IEmployee {
+  id: string;
+  name: string;
+  departement: DepartementType;
+  level: LevelType;
+}
 @Component({
   selector: 'app-root',
   templateUrl: './app.html',
   //ON IMPORT LE PIPE AUSS ICI LE UPPSERCASEPIPE
-  imports: [Employee, DatePipe, UpperCasePipe],
+  imports: [Employee],
   styleUrl: './app.css',
 })
 export class App {
-  //1 - D É F I N I R   U N   E T A T
-  name = signal('Valisoa');
-  age = signal(22);
+ 
+  employee: IEmployee = {
+    id: '1245efdkhh12dhje',
+    name: 'Jao',
+    departement: 'IT',
+    level: 'M',
+  };
 
-  // 3 -  É C O U T E R  A U   E V E N T  ET 4 - RÉ A G I R 
-  increment() {
-    //ON PEUT UTILISER SET => POUR CHANGEEMENT ET UPDATE => ON VEUT METTRE AJOUR AVEC L'ANCIEN VALEUR
-    this.age.update((age) => age + 1);
-  }
-
-  decrement() {
-    //ON PEUT UTILISER SET => POUR CHANGEEMENT ET UPDATE => ON VEUT METTRE AJOUR AVEC L'ANCIEN VALEUR
-    this.age.update((age) => age - 1);
+  // 5 - A P P E L  E T  L O G
+  clickParent(id: string) {
+    console.log(' voila le id ', id);
   }
 }

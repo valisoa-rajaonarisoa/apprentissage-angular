@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { LevelType } from './employee/employee';
+import { LevelType } from './app';
+// import { LevelType } from './employee/employee';
 
 @Pipe({
   name: 'level',
@@ -16,7 +17,7 @@ export class LevelPipe implements PipeTransform {
         resutl = 'Senior';
         break;
       }
-      case 'J': {
+      case 'M': {
         resutl = 'Moyen';
         break;
       }
