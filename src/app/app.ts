@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-import { Employee } from './employee/employee';
-import { CardEmployee } from './card-employee/card-employee';
+import { Component, signal } from '@angular/core';
+import { EmployeeList } from './employee-list/employee-list';
 
 export type DepartementType = 'IT' | 'Marketing' | 'HR';
 export type LevelType = 'J' | 'M' | 'S';
@@ -14,41 +13,42 @@ export interface IEmployee {
 @Component({
   selector: 'app-root',
   templateUrl: './app.html',
-  //ON IMPORT LE PIPE AUSS ICI LE UPPSERCASEPIPE
-  imports: [Employee, CardEmployee],
-  styleUrl: './app.css',
+  imports: [EmployeeList],
 })
 export class App {
-  listEmployes: IEmployee[] = [
+  //list
+  employeeList = signal<IEmployee[]>([
     {
-      id: '1245efdkhh12dddhje',
-      name: 'Jao',
+      id: 'emp-001',
+      name: 'Tiana Rakoto',
+      departement: 'IT',
+      level: 'S', // Senior -> bg-green-500
+    },
+    {
+      id: 'emp-002',
+      name: 'Rova Niaina',
+      departement: 'Marketing',
+      level: 'M', // Middle -> bg-green-500 (selon ton code actuel)
+    },
+    {
+      id: 'emp-003',
+      name: 'Sitraka Solo',
+      departement: 'HR',
+      level: 'J', // Junior -> bg-red-400
+    },
+    {
+      id: 'emp-004',
+      name: 'Fano Andri',
       departement: 'IT',
       level: 'M',
     },
     {
-      id: '1245efzedkhh12dhje',
-      name: 'Koto',
-      departement: 'HR',
-      level: 'J',
+      id: 'emp-005',
+      name: 'Miora Lova',
+      departement: 'Marketing',
+      level: 'J', // Junior -> bg-red-400
     },
-    {
-      id: '1245esdfafdkhh12dhje',
-      name: 'Tanjona',
-      departement: 'HR',
-      level: 'S',
-    },
-  ];
+  ]);
 
-  employee: IEmployee = {
-    id: '1245efdkhh12dhje',
-    name: 'Jao',
-    departement: 'IT',
-    level: 'M',
-  };
-
-  // 5 - A P P E L  E T  L O G
-  clickParent(id: string) {
-    console.log(' voila le id ', id);
-  }
+  
 }

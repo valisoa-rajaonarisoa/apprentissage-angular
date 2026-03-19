@@ -1,17 +1,4 @@
-<div>
-  <div class="mt-5">
-    <h2 class="text-green-500">Liste des employee en cards</h2>
-    <!-- list  -->
-
-    <div class="flex gap-3">
-      <!-- track notre key ce sera le id -->
-      @for (item of listEmployes; track item.id) {
-        <!-- //:Input on utilise attribute bedding  [nom]="value"  -->
-        <!-- Output : on utilise event bedding (nom)="functionName()" -->
-        <app-employee  [employee]="item" (monOutput)="clickParent($event)" />
-      } @empty {
-        <p>Aucun employee pour le moment</p>
-      }
-    </div>
-  </div>
-</div>
+<section class="py-8 px-14">
+  <h2>List des employee</h2>
+  <app-employee-list [employeeList]="employeeList()" />
+</section>
