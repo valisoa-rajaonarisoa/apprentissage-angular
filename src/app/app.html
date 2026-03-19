@@ -1,14 +1,17 @@
 <div>
-  <!-- //:Input on utilise attribute bedding  [nom]="value"  -->
-  <!-- Output : on utilise event bedding (nom)="functionName()" -->
-  <app-employee 
-  employee]="employee" 
+  <div class="mt-5">
+    <h2 class="text-green-500">Liste des employee en cards</h2>
+    <!-- list  -->
 
-  <!--  4   Ici on met le nom de l output de l enfant  -->
-  <!-- suivi le nom de la fonction qui va afficher la valeur recuperer dans le parent -->
-  <!-- avec $event pour recuperer le return du output qui etait un string -->
-  
-  (monOutput)="clickParent($event)" 
-  
-  />
+    <div class="flex gap-3">
+      <!-- track notre key ce sera le id -->
+      @for (item of listEmployes; track item.id) {
+        <!-- //:Input on utilise attribute bedding  [nom]="value"  -->
+        <!-- Output : on utilise event bedding (nom)="functionName()" -->
+        <app-employee  [employee]="item" (monOutput)="clickParent($event)" />
+      } @empty {
+        <p>Aucun employee pour le moment</p>
+      }
+    </div>
+  </div>
 </div>
