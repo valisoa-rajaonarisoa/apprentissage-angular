@@ -1,0 +1,21 @@
+<div>
+  <input [formControl]="searchCtrl" type="text" placeholder="search ..." />
+</div>
+
+<div class="mt-10">
+  <h2>Nombre resultat</h2>
+  <ul>
+    <!-- L’async pipe est un outil d’Angular que tu utilises directement dans le template pour s’abonner automatiquement à un Observable (ou Promise) et afficher ses données.
+
+    actions: 
+
+    -  s’abonne automatiquement à l’Observable
+    - met à jour le template à chaque nouvelle valeur émise
+    - se désabonne automatiquement quand le composant est détruit (pas besoin de OnDestroy)
+    
+    -->
+    @for (person of personData$ | async; track person) {
+      <li>{{ person.lastName }} {{ person.firstName }} - 19/08/1992</li>
+    }
+  </ul>
+</div>
