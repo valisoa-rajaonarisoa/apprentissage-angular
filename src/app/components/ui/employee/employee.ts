@@ -1,7 +1,8 @@
 import { Component, computed, input, output } from '@angular/core';
-import { IEmployee } from '../app';
-import { LevelPipe } from '../level-pipe';
+
 import { NgClass } from '@angular/common';
+import { LevelPipe } from '../../../pipes/level-pipe';
+import { IEmployee } from '../../../models/employee.model';
 
 @Component({
   selector: 'app-employee',

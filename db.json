@@ -1,0 +1,17 @@
+{
+  "employees": [
+    {
+      "id": "3",
+      "name": "Malala",
+      "departement": "M",
+      "level": "HR"
+    },
+    {
+      "id": "10",
+      "name": "Tovo",
+      "departement": "M",
+      "level": "IT"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

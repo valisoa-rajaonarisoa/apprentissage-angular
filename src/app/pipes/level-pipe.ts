@@ -1,6 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { LevelType } from './app';
-// import { LevelType } from './employee/employee';
+import { LevelType } from '../models/employee.model';
 
 @Pipe({
   name: 'level',
