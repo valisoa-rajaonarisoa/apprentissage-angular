@@ -1,0 +1,57 @@
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  /* background: red; */
+  padding: 10px 18px;
+  border-radius: 10px;
+  box-shadow: 0 1px 1px 0.05vh black;
+}
+
+.example-full-width {
+  width: 100%;
+}
+.my_form {
+  /* background-color: red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 25em;
+}
+
+.my_form h2 {
+  /* background-color: red; */
+  font-size: 23px;
+  padding-bottom: 20px;
+}
+
+.my_form h4 {
+  /* background-color: red; */
+  font-size: 13px;
+}
+
+section {
+  display: flex;
+  align-items: center;
+}
+
+.example-label {
+  font-size: 14px;
+  margin: 0 16px 0 8px;
+  min-width: 120px;
+}
+
+.example-button-row {
+  max-width: 600px;
+}
+
+.example-button-row .mat-mdc-button-base {
+  margin: 8px 8px 8px 0;
+}
+
+.example-flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}

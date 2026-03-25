@@ -1,0 +1,56 @@
+<div class="my_form">
+  <h2>Login</h2>
+
+  @if (invalidCredetianls()) {
+    <p class="mb-4 text-red-500">email incorrect ou mot de passe incorrect</p>
+  }
+
+  <form class="example-form" [formGroup]="registerData">
+    <mat-form-field class="example-full-width">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput placeholder="Ex. pat@example.com" formControlName="email" />
+
+      @let emailCtrl = registerData.get('email');
+
+      @if (emailCtrl?.errors) {
+        @if (emailCtrl?.hasError('required') && emailCtrl?.touched) {
+          <mat-error><h4>email obligatoire</h4> </mat-error>
+        }
+
+        @if (emailCtrl?.hasError('email')) {
+          <mat-error><h4>email invalid</h4> </mat-error>
+        }
+      }
+    </mat-form-field>
+
+    <div class="flex flex-col">
+      <mat-form-field>
+        <mat-label>Enter your password</mat-label>
+        <input matInput [type]="hide() ? 'password' : 'text'" formControlName="password" />
+        <button
+          matIconButton
+          matSuffix
+          (click)="clickEvent($event)"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide()"
+        >
+          <mat-icon>{{ hide() ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+
+        @let passwordCtrl = registerData.get('password');
+
+        @if (passwordCtrl?.errors) {
+          @if (passwordCtrl?.hasError('required') && passwordCtrl?.touched) {
+            <mat-error><h4>Mot de passe obligatoire</h4> </mat-error>
+          }
+        }
+      </mat-form-field>
+    </div>
+    <div>
+      <a class="underline text-blue-400" routerLink="/register">J'ai deja un compte</a>
+    </div>
+    <div class="example-button-row">
+      <button type="submit" (click)="onSubmit()" matButton>confirm</button>
+    </div>
+  </form>
+</div>

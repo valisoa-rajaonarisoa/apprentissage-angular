@@ -1,0 +1,96 @@
+<div class="my_form">
+  <h2>Register</h2>
+  @if (invalidCredetianls()) {
+    <p class="mb-4 text-red-500">email ou username déja utilisé</p>
+  }
+
+  <form class="example-form" [formGroup]="registerData">
+    <mat-form-field class="example-full-width">
+      <mat-label>Username</mat-label>
+      <input type="text" matInput placeholder="Ex. Jao" formControlName="username" />
+
+      @let usernameCtrl = registerData.get('username');
+
+      @if (usernameCtrl?.errors) {
+        @if (usernameCtrl?.hasError('required') && usernameCtrl?.touched) {
+          <mat-error><h4>Entrer votre username</h4> </mat-error>
+        }
+
+        @if (usernameCtrl?.hasError('minlength')) {
+          <mat-error><h4>minum 2 caractère</h4> </mat-error>
+        }
+        @if (usernameCtrl?.hasError('maxlength')) {
+          <mat-error><h4>minum 10 caractère</h4> </mat-error>
+        }
+      }
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput placeholder="Ex. pat@example.com" formControlName="email" />
+
+      @let emailCtrl = registerData.get('email');
+
+      @if (emailCtrl?.errors) {
+        @if (emailCtrl?.hasError('required') && emailCtrl?.touched) {
+          <mat-error><h4>email obligatoire</h4> </mat-error>
+        }
+
+        @if (emailCtrl?.hasError('email')) {
+          <mat-error><h4>email invalid</h4> </mat-error>
+        }
+      }
+    </mat-form-field>
+
+    <div class="flex flex-col">
+      <mat-form-field>
+        <mat-label>Enter your password</mat-label>
+        <input matInput [type]="hide() ? 'password' : 'text'" formControlName="password" />
+        <button
+          matIconButton
+          matSuffix
+          (click)="clickEvent($event)"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide()"
+        >
+          <mat-icon>{{ hide() ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+
+        @let passwordCtrl = registerData.get('password');
+
+        @if (passwordCtrl?.errors) {
+          @if (passwordCtrl?.hasError('required') && passwordCtrl?.touched) {
+            <mat-error><h4>Mot de passe obligatoire</h4> </mat-error>
+          }
+
+          @if (passwordCtrl?.hasError('minlength')) {
+            <mat-error><h4>minum 6 caractère</h4> </mat-error>
+          }
+        }
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Confirm your password</mat-label>
+        <input matInput [type]="hide() ? 'password' : 'text'" formControlName="confirmPassword" />
+
+        @let confirmPasswordCtrl = registerData.get('confirmPassword');
+
+        @if (confirmPasswordCtrl?.errors) {
+          @if (passwordCtrl?.hasError('required') && confirmPasswordCtrl?.touched) {
+            <mat-error><h4>Mot de passe de confirmation obligatoire</h4> </mat-error>
+          }
+        }
+
+        @if (confirmPasswordCtrl?.value != passwordCtrl?.value) {
+          <mat-error><h4>les mots de passe ne correspondent pas</h4> </mat-error>
+        }
+      </mat-form-field>
+    </div>
+    <div>
+      <a class="underline text-blue-400" routerLink="/login">J'ai deja un compte</a>
+    </div>
+    <div class="example-button-row">
+      <button type="submit" (click)="onSubmit()" matButton>confirm</button>
+    </div>
+  </form>
+</div>
