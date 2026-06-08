@@ -33,6 +33,8 @@ export class App implements OnInit {
     this.loadEmployee();
 
     // 2. ÉCOUTER LE TALKIE-WALKIE : Dès que refresh$ émet, on recharge la liste !
+    //ici, on ecoute le refresh, dés qu'on attend quelque chose de dans, on execute this.loadEmployee()
+    //normalement , on doit .subscribe((val)=>console.log(val)), ici void, est on execute this.loadEmployee()
     this.employeeApi.refresh$
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe(() => this.loadEmployee());
@@ -73,7 +75,7 @@ export class App implements OnInit {
         next: (response) => {
           console.log('voici la response ', response);
 
-          //appel du triggerRefresh
+          //appel du triggerRefresh qui va ensuite faire next() //on sonne l'alarme
           this.employeeApi.triggerRefresh();
 
           //reinitialise le inpu

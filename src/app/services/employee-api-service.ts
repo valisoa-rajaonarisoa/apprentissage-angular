@@ -10,13 +10,18 @@ const URL = 'http://localhost:3000/users';
 export class EmployeeApiService {
   private http = inject(HttpClient);
 
-  //talk-walkie
+  //talk-walkie on peut ecouter et envoyer à la fois
+  //void parcque, on ne va pas envoyer de data, juste notification
   private refreshSubject = new Subject<void>();
 
-  //alarme
+  //On l'expose en tant que écoute tout simplement
+  // c'est à dire le rendre observable pour qu'on puisse faire (.subscribe apres)
+  // désactive la partied'envoie (car c'est un SUbject donc il peut envoyer et écouter)
+  //on aura juste besoin que la partie observale
   refresh$ = this.refreshSubject.asObservable();
 
   //methode appeller apres success add to formulaire
+  //fonction, pour envoyer de la data(ici pour sonner l'alarme), au lieu de .next("bonjour") car void
   triggerRefresh() {
     this.refreshSubject.next();
   }
